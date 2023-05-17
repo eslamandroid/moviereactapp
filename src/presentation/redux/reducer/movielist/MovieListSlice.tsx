@@ -3,13 +3,24 @@ import {
   createAsyncThunk,
   createSlice,
 } from '@reduxjs/toolkit';
-import {MovieListState, movieInitState} from './MovieListState';
 import myContainer from '../../../../di/di';
 import {GetMovieUseCase} from '../../../../domain/usecases/movie/MovieUseCases';
-import {MovieModel} from '../../../../domain/models/MovieModels';
+import {MovieItemModel, MovieModel} from '../../../../domain/models/MovieModels';
 import {Status} from '../../../../common/domain/either';
 
 const movieUseCase = myContainer.get<GetMovieUseCase>('GetMovieUseCase');
+
+// define state
+export interface MovieListState {
+  movies?: MovieItemModel[];
+  isLoading: boolean;
+  movie?: MovieModel;
+}
+
+// init default state
+const initState: MovieListState = {
+  isLoading: false
+}
 
 export const fetchMovies= createAsyncThunk(
   'movieListSlice/fetchMovies',
@@ -48,7 +59,7 @@ const movieReducerBuilder = (
 
 const movieListSlice = createSlice({
   name: 'movieList',
-  initialState: movieInitState,
+  initialState: initState,
   reducers: {},
   extraReducers: builder => {
     movieReducerBuilder(builder);
