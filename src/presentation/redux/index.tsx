@@ -2,11 +2,15 @@ import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
 import movieReducer from '../redux/reducer/movielist/MovieListSlice';
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import PopularMoviesReducer from './reducer/popularmovie/PopularMoviesSlice';
+import TopRateMovieReducer from './reducer/topratemovie/TopRateMovieSlice';
+import UpComingMovieReducer from './reducer/upcomingmovie/UpComingMovieSlice';
 
 export const store = configureStore({
   reducer: {
     movieList: movieReducer,
-    popularMovieList:PopularMoviesReducer
+    popularMovieList:PopularMoviesReducer,
+    topRateMovieList:TopRateMovieReducer,
+    upComingMovieList:UpComingMovieReducer
   },
   middleware: getDefaultMiddleware({
     serializableCheck: false,
