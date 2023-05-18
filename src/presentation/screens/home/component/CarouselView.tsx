@@ -1,5 +1,5 @@
 import { PropsWithChildren, useRef, useEffect } from "react";
-import { FlatList, NativeSyntheticEvent, NativeScrollEvent } from "react-native";
+import { FlatList, NativeSyntheticEvent, NativeScrollEvent, Platform } from "react-native";
 import { MovieItemModel } from "../../../../domain/models/movielist/MovieModels";
 import MovieCarouselItem from "./MovieCarouselItem";
 
@@ -34,6 +34,7 @@ const CarsouelView = ({ movies }: PropsWithChildren<{ movies: MovieItemModel[] }
 
     return (<FlatList
         data={movies}
+  
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}

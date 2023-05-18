@@ -1,18 +1,19 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import HomeScreen from '../screens/home/Home';
 import MaterialIcons from 'react-native-vector-icons/Feather';
-import { NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import PopularScreen from '../screens/popular/PopularScreen';
 import TopRateScreen from '../screens/toprate/TopRateScreen';
 import UpComingScreen from '../screens/upcoming/UpComingScreen';
 import MovieDetailsScreen from '../screens/moviedetails/MovieDetailsScreen';
+import { Platform } from 'react-native';
 
 export type RootStackParamList = {
   [x: string]: any;
-  BottomNavigation:{}
+  BottomNavigation: {}
   MovieDetails: {
     movieId: number;
   };
@@ -25,7 +26,11 @@ export const MovieDetailsRoute = 'details';
 const BottomNavigation = () => {
   return (
     <Tab.Navigator screenOptions={{
-      tabBarLabelStyle: { fontSize: 15, fontWeight: '600' },
+      tabBarLabelStyle: {
+        fontSize: 15,
+        fontWeight: '600',
+        bottom: 4
+      },
       tabBarActiveTintColor: 'red',
       tabBarInactiveTintColor: '#fcb6b6',
       tabBarIconStyle: {
@@ -33,17 +38,20 @@ const BottomNavigation = () => {
         height: 10
       },
       tabBarStyle: {
-        height: 85
+        height: Platform.OS == 'android' ? 58 : 90
       },
-      headerStyle:{
-        backgroundColor:'white'
+      headerStyle: {
+        backgroundColor: 'white'
       },
-      headerTitleStyle:{
-        fontWeight:'bold',
-        fontSize:20,
-        color:'red'
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        color: 'red'
       },
-      headerShadowVisible:true,
+      headerShadowVisible: true,
     }}>
       <Tab.Screen
         name="Home"
@@ -64,7 +72,7 @@ const BottomNavigation = () => {
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="trending-up" color={color} size={size} />
           ),
-          
+
         }}
       />
       <Tab.Screen
@@ -94,15 +102,15 @@ const BottomNavigation = () => {
 const AppNavigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ 
-        headerShown: false 
-        }}>
+      <Stack.Navigator screenOptions={{
+        headerShown: false
+      }}>
         <Stack.Screen
           name="BottomNavigation"
           component={BottomNavigation}
-          options={{ 
-            headerShown: false, 
-            headerMode: 'screen',   
+          options={{
+            headerShown: false,
+            headerMode: 'screen',
           }}
         />
         <Stack.Screen name='MovieDetails' component={MovieDetailsScreen} />

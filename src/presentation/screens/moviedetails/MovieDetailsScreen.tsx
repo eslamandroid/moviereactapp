@@ -1,4 +1,4 @@
-import { StyleSheet, View, ScrollView, Image, ActivityIndicator, Text, Linking } from "react-native";
+import { StyleSheet, View, ScrollView, Image, ActivityIndicator, Text, Linking, Platform, StatusBar } from "react-native";
 import { useAppDispatch, useAppSelector } from "../../redux";
 import { useEffect, useState } from "react";
 import { fetchMovieDetails } from "../../redux/reducer/moviedetails/MovieDetailsSlice";
@@ -22,16 +22,24 @@ const MovieDetailsScreen = ({ route }: Props) => {
 
     useEffect(() => {
         dispatch(fetchMovieDetails(moveId))
+        return () => {
+            if (Platform.OS == 'android') {
+                StatusBar.setBackgroundColor('white');
+                StatusBar.setBarStyle('dark-content');
+            }
+        }
     }, [])
 
     return (
         <>
+            {(Platform.OS == 'android') && <StatusBar translucent backgroundColor={'transparent'} barStyle="dark-content" />}
+
             {(isLoading || imageLoading) &&
                 (<View style={styles.imageLoader}>
                     <ActivityIndicator color={COLOR.primaryColor} />
                 </View>)}
 
-            {(!isLoading && movie!=null) && (
+            {(!isLoading && movie != null) && (
                 <ScrollView style={styles.mainContainer}>
                     <View style={styles.posterContainer}>
                         <Image
