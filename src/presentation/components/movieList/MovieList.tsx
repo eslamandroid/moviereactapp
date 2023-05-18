@@ -2,16 +2,26 @@ import { FlatList, Image, View, TouchableOpacity, StyleSheet } from 'react-nativ
 import { Constants } from '../../../common/appconstants/constants';
 import { PropsWithChildren } from 'react';
 import { MovieItemModel } from '../../../domain/models/movielist/MovieModels';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../navigation/AppNavigation';
 
 type MovieListProps = PropsWithChildren<{
   movies: MovieItemModel[],
-  onPress: (item: MovieItemModel) => void,
   loadMoreData: () => void
 }>;
-const MovieList = ({ movies, onPress, loadMoreData }: MovieListProps) => {
+const MovieList = ({ movies, loadMoreData }: MovieListProps) => {
+  const navigation = useNavigation<RootStackParamList>();
+
   const movieItem = ({ item }: PropsWithChildren<{ item: MovieItemModel }>) => {
+
+    const onNavigateClick = () => {
+      navigation.navigate('MovieDetails', {
+        movieId: item.id
+      });
+    };
+
     return (
-      <TouchableOpacity onPress={() => onPress(item)} style={styles.movieItemContainer}>
+      <TouchableOpacity onPress={onNavigateClick} style={styles.movieItemContainer}>
         <Image
           style={styles.imageView}
           source={{
@@ -21,6 +31,7 @@ const MovieList = ({ movies, onPress, loadMoreData }: MovieListProps) => {
       </TouchableOpacity>
     );
   };
+
   return (
     <View style={styles.mainView}>
       <FlatList

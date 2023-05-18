@@ -34,7 +34,16 @@ const BottomNavigation = () => {
       },
       tabBarStyle: {
         height: 85
-      }
+      },
+      headerStyle:{
+        backgroundColor:'white'
+      },
+      headerTitleStyle:{
+        fontWeight:'bold',
+        fontSize:20,
+        color:'red'
+      },
+      headerShadowVisible:true,
     }}>
       <Tab.Screen
         name="Home"
@@ -48,13 +57,14 @@ const BottomNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Popular"
+        name="Populars"
         component={PopularScreen}
         options={{
           tabBarLabel: 'Popular',
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="trending-up" color={color} size={size} />
           ),
+          
         }}
       />
       <Tab.Screen
@@ -81,16 +91,19 @@ const BottomNavigation = () => {
   );
 };
 
- 
- 
 const AppNavigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{ 
+        headerShown: false 
+        }}>
         <Stack.Screen
           name="BottomNavigation"
           component={BottomNavigation}
-          options={{ headerShown: false, headerMode: 'screen' }}
+          options={{ 
+            headerShown: false, 
+            headerMode: 'screen',   
+          }}
         />
         <Stack.Screen name='MovieDetails' component={MovieDetailsScreen} />
       </Stack.Navigator>

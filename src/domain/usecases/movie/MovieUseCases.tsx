@@ -5,6 +5,7 @@ import { injectable, inject } from 'inversify';
 import { Resource } from '../../../common/domain/either';
 import 'reflect-metadata';
 import { MovieDetailsModel } from '../../models/moviedetails/MovieDetailsModels';
+import { HomePageModel } from '../../models/homepage/HomePageModels';
 
 @injectable()
 export class GetMovieUseCase implements UseCase<Resource<MovieModel>, string> {
@@ -46,3 +47,6 @@ export class GetMovieDetails implements UseCase<Resource<MovieDetailsModel>, num
     return this.repository.getMovieDetails(_params!);
   }
 }
+
+
+ 

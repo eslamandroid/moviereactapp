@@ -12,6 +12,7 @@ export class MovieRepositoryImpl implements MovieRepository {
     @inject('MovieRemoteDatasource')
     private readonly movieRemoteDatasource: MovieRemoteDatasource,
   ) { }
+
   async getMovieDetails(movieId: number): Promise<Resource<MovieDetailsModel>> {
     try {
       const result = await this.movieRemoteDatasource.getMovieDetails(movieId);

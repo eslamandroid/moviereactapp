@@ -11,7 +11,7 @@ type HorizontalMovieCardProps = PropsWithChildren<{
     movie: MovieItemModel
 }>;
 
-const HorizontalMovieCard = ({ children, movie }: HorizontalMovieCardProps) => {
+const HorizontalMovieCard = ({ movie }: HorizontalMovieCardProps) => {
     const navigation = useNavigation<RootStackParamList>();
 
     const onNavigateClick = () => {

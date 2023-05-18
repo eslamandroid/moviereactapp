@@ -41,7 +41,7 @@ const movieReducerBuilder = (
     builder.addCase(fetchPopularMovies.fulfilled, (state, action) => {
         // logic here
         state.isLoading = false;
-        state.movie = action.payload as MovieModel;        
+        state.movie = action.payload as MovieModel;
         const currentList = state.movies ?? [];
         currentList?.push(...(action.payload as MovieModel).movieList);
         state.movies = currentList;

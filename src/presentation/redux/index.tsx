@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import movieReducer from '../redux/reducer/movielist/MovieListSlice';
+import HomePageReducer from '../redux/reducer/homepage/HomePageSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import PopularMoviesReducer from './reducer/popularmovie/PopularMoviesSlice';
 import TopRateMovieReducer from './reducer/topratemovie/TopRateMovieSlice';
@@ -8,7 +8,7 @@ import MovieDetailsReducer from './reducer/moviedetails/MovieDetailsSlice';
 
 export const store = configureStore({
   reducer: {
-    movieList: movieReducer,
+    homePage: HomePageReducer,
     popularMovieList: PopularMoviesReducer,
     topRateMovieList: TopRateMovieReducer,
     upComingMovieList: UpComingMovieReducer,
