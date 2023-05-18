@@ -5,5 +5,5 @@
 - Clean Architecture
 
 ## Result
-![Video](/record/video record.mp4)
+![Video](/record/video_record.mp4)
 
