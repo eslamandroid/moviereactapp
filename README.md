@@ -5,5 +5,5 @@
 - Clean Architecture
 
 ## Result
-![Video](/record/video_record.mp4)
+![Video] <video src='/record/video_record.mp4' width=180/>
 
