@@ -2,7 +2,7 @@ import { ActionReducerMapBuilder, createAsyncThunk, createSlice } from "@reduxjs
 import container from "../../../../di/di";
 import { GetPopularMovies } from "../../../../domain/usecases/movie/MovieUseCases";
 import { Status } from "../../../../common/domain/either";
-import { MovieItemModel, MovieModel } from "../../../../domain/models/MovieModels";
+import { MovieItemModel, MovieModel } from "../../../../domain/models/movielist/MovieModels";
 
 const getPopularMovies = container.get<GetPopularMovies>('GetPopularMovies');
 

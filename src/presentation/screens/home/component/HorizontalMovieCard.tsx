@@ -1,16 +1,25 @@
 import type { PropsWithChildren } from 'react';
-import { MovieItemModel } from "../../../../domain/models/MovieModels"
+import { MovieItemModel } from "../../../../domain/models/movielist/MovieModels"
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Image, Text, StyleSheet } from 'react-native'
 import { Constants } from "../../../../common/appconstants/constants";
 import { COLOR } from "../../../../common/appconstants/Colors";
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../../navigation/AppNavigation';
 
 type HorizontalMovieCardProps = PropsWithChildren<{
     movie: MovieItemModel
 }>;
 
 const HorizontalMovieCard = ({ children, movie }: HorizontalMovieCardProps) => {
-    return (<TouchableOpacity style={styles.card}>
+    const navigation = useNavigation<RootStackParamList>();
+
+    const onNavigateClick = () => {
+        navigation.navigate('MovieDetails', {
+            movieId: movie.id
+        });
+    };
+    return (<TouchableOpacity style={styles.card} onPress={onNavigateClick}>
         <Image style={styles.thumbnail} source={{ uri: `${Constants.IMAGE_URL}${movie.poster_path}` }} />
         <Text style={styles.title}>{movie.title}</Text>
     </TouchableOpacity>);

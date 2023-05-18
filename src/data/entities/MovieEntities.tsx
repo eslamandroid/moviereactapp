@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { MovieItemModel, MovieModel } from '../../domain/models/MovieModels';
+import { MovieItemModel, MovieModel } from '../../domain/models/movielist/MovieModels';
 
 
 export class MovieEntity extends MovieModel {

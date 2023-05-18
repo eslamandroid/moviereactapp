@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import { MovieItemModel } from "../../../../domain/models/MovieModels";
+import { MovieItemModel } from "../../../../domain/models/movielist/MovieModels";
 import { Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Constants } from "../../../../common/appconstants/constants";
 

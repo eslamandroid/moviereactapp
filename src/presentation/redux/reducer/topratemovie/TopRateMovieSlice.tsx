@@ -1,6 +1,6 @@
 import { ActionReducerMapBuilder, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Status } from "../../../../common/domain/either";
-import { MovieItemModel, MovieModel } from "../../../../domain/models/MovieModels";
+import { MovieItemModel, MovieModel } from "../../../../domain/models/movielist/MovieModels";
 import container from "../../../../di/di";
 import { GetTopRateMoview } from "../../../../domain/usecases/movie/MovieUseCases";
 

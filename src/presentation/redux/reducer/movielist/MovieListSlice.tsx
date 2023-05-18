@@ -5,7 +5,7 @@ import {
 } from '@reduxjs/toolkit';
 import myContainer from '../../../../di/di';
 import {GetMovieUseCase} from '../../../../domain/usecases/movie/MovieUseCases';
-import {MovieItemModel, MovieModel} from '../../../../domain/models/MovieModels';
+import {MovieItemModel, MovieModel} from '../../../../domain/models/movielist/MovieModels';
 import {Status} from '../../../../common/domain/either';
 
 const movieUseCase = myContainer.get<GetMovieUseCase>('GetMovieUseCase');

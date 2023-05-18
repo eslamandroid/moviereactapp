@@ -1,7 +1,7 @@
 import { FlatList, Image, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Constants } from '../../../common/appconstants/constants';
 import { PropsWithChildren } from 'react';
-import { MovieItemModel } from '../../../domain/models/MovieModels';
+import { MovieItemModel } from '../../../domain/models/movielist/MovieModels';
 
 type MovieListProps = PropsWithChildren<{
   movies: MovieItemModel[],

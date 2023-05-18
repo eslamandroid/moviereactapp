@@ -1,16 +1,23 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack';
+import {createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import HomeScreen from '../screens/home/Home';
-import MaterialIcons from 'react-native-vector-icons/Ionicons';
-import { NavigationContainer, ParamListBase, useNavigation } from '@react-navigation/native';
+import MaterialIcons from 'react-native-vector-icons/Feather';
+import { NavigationContainer} from '@react-navigation/native';
 import PopularScreen from '../screens/popular/PopularScreen';
 import TopRateScreen from '../screens/toprate/TopRateScreen';
 import UpComingScreen from '../screens/upcoming/UpComingScreen';
 import MovieDetailsScreen from '../screens/moviedetails/MovieDetailsScreen';
 
-const Stack = createStackNavigator();
+export type RootStackParamList = {
+  [x: string]: any;
+  BottomNavigation:{}
+  MovieDetails: {
+    movieId: number;
+  };
+};
+const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
 export const MovieDetailsRoute = 'details';
@@ -36,7 +43,7 @@ const BottomNavigation = () => {
           tabBarLabel: 'Home',
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="videocam-outline" color={color} size={size} />
+            <MaterialIcons name="video" color={color} size={size} />
           ),
         }}
       />
@@ -46,7 +53,7 @@ const BottomNavigation = () => {
         options={{
           tabBarLabel: 'Popular',
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="trending-up-outline" color={color} size={size} />
+            <MaterialIcons name="trending-up" color={color} size={size} />
           ),
         }}
       />
@@ -66,13 +73,15 @@ const BottomNavigation = () => {
         options={{
           tabBarLabel: 'UpComing',
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="play-forward-circle-outline" color={color} size={size} />
+            <MaterialIcons name="fast-forward" color={color} size={size} />
           ),
         }}
       />
     </Tab.Navigator>
   );
 };
+
+ 
  
 const AppNavigation = () => {
   return (
@@ -83,7 +92,7 @@ const AppNavigation = () => {
           component={BottomNavigation}
           options={{ headerShown: false, headerMode: 'screen' }}
         />
-        <Stack.Screen name={MovieDetailsRoute} component={MovieDetailsScreen} />
+        <Stack.Screen name='MovieDetails' component={MovieDetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

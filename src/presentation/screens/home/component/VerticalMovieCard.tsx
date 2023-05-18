@@ -1,22 +1,22 @@
 import { PropsWithChildren } from "react";
-import { MovieItemModel } from "../../../../domain/models/MovieModels";
+import { MovieItemModel } from "../../../../domain/models/movielist/MovieModels";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StyleSheet, Image, View, Text } from 'react-native';
 import { Constants } from "../../../../common/appconstants/constants";
 import { COLOR } from "../../../../common/appconstants/Colors";
-import Icon from 'react-native-vector-icons/Ionicons';
-import { ParamListBase, useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
+import Icon from 'react-native-vector-icons/Feather';
+import { useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../../../navigation/AppNavigation";
 
 type VerticalMovieCardType = PropsWithChildren<{
     movie: MovieItemModel
 }>;
 
 const VerticalMovieCard = ({ movie }: VerticalMovieCardType) => {
-    const navigation = useNavigation<StackNavigationProp<ParamListBase>>();
+    const navigation = useNavigation<RootStackParamList>();
 
     const onNavigateClick = () => {
-        navigation.navigate('details', {
+        navigation.navigate('MovieDetails', {
             movieId: movie.id
         });
     };

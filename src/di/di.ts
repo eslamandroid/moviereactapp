@@ -6,7 +6,7 @@ import {
   MovieRemoteDatasourceImpl,
 } from '../data/datasources/movie/MovieRemoteDatasource';
 
-import {GetMovieUseCase, GetPopularMovies, GetTopRateMoview, GetUpComingMovies} from '../domain/usecases/movie/MovieUseCases';
+import {GetMovieDetails, GetMovieUseCase, GetPopularMovies, GetTopRateMoview, GetUpComingMovies} from '../domain/usecases/movie/MovieUseCases';
 
 const myContainer = new Container();
 
@@ -15,6 +15,7 @@ myContainer.bind<GetMovieUseCase>('GetMovieUseCase').to(GetMovieUseCase);
 myContainer.bind<GetPopularMovies>('GetPopularMovies').to(GetPopularMovies);
 myContainer.bind<GetTopRateMoview>('GetTopRateMoview').to(GetTopRateMoview);
 myContainer.bind<GetUpComingMovies>('GetUpComingMovies').to(GetUpComingMovies);
+myContainer.bind<GetMovieDetails>('GetMovieDetails').to(GetMovieDetails);
 
 //Repositories
 myContainer.bind<MovieRepository>('MovieRepository').to(MovieRepositoryImpl);

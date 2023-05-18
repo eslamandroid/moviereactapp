@@ -2,7 +2,7 @@ import axios from 'axios';
 import {ApiUrls} from './api_urls';
 
 const AxiosService = {
-  async getServiceData(url: string, params: any) {
+  async getServiceData(url: string, params: any={}) {
     let requestHeader = {
       'Content-Type': 'application/json',
     };
