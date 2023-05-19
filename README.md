@@ -2,6 +2,7 @@
 - React Native
 - Axios for HTTP Client Library
 - Redux for state management library
+- Inversify for Dependency injection
 - Clean Architecture
 
 ## Result
